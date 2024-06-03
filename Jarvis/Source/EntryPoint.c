@@ -1,5 +1,6 @@
 #include "core/runtime.h"
 #include "core/plugins.h"
+#include "core/tasks.h"
 
 int main()
 {
@@ -11,17 +12,20 @@ Plugin plugin;
 
 OnStart(1)
 {
-	plugin = Plugins.Load(stack_string("ExamplePlugin.dll"));
+	plugin = Plugins.Load(stack_string("Plugin.dll"));
 }
+
+int i = 0;
+int x = 0;
 
 OnUpdate(1)
 {
-	fprintf(stdout, "Jarvis OnUpdate\n");
+	fprintf_red(stdout, "Jarvis OnUpdate: %i\n", i++);
 }
 
 AfterUpdate(1)
 {
-	fprintf(stdout, "Jarvis AfterUpdate\n");
+	fprintf_red(stdout, "Jarvis AfterUpdate: %i\n", x++);
 }
 
 OnClose(1)
