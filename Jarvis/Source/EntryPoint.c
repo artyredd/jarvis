@@ -16,17 +16,12 @@ OnStart(1)
 
 OnUpdate(1)
 {
-	fprintf(stdout, "\n");
-
-	// sub braces
-	{
-		fprintf(stdout, "");
-	}
+	fprintf(stdout, "Jarvis OnUpdate\n");
 }
 
 AfterUpdate(1)
 {
-	fprintf(stdout, "\n");
+	fprintf(stdout, "Jarvis AfterUpdate\n");
 }
 
 OnClose(1)
