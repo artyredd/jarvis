@@ -20,7 +20,7 @@ file(GLOB_RECURSE jarvisAssets CONFIGURE_DEPENDS
 add_executable(Jarvis ${jarvisSourceFiles} ${jarvisHeaderFiles})
 
 set_property(TARGET Jarvis PROPERTY COMPILE_WARNING_AS_ERROR ON)
-set_target_properties(Jarvis PROPERTIES COMPILE_FLAGS "/std:c11 /ZI /Od")
+set_target_properties(Jarvis PROPERTIES COMPILE_FLAGS "/std:c11 /ZI /Od /experimental:c11atomics")
 
 include(FetchContent)
 
