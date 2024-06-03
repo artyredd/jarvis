@@ -18,10 +18,10 @@ OnUpdate(1)
 {
 	fprintf(stdout, "\n");
 
-	//// sub braces
-	//{
-	//	fprintf(stdout, "");
-	//}
+	// sub braces
+	{
+		fprintf(stdout, "");
+	}
 }
 
 AfterUpdate(1)
