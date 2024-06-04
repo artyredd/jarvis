@@ -66,3 +66,21 @@ set_target_properties(Jarvis PROPERTIES
   RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL "${CMAKE_BINARY_DIR}/bin"
   RUNTIME_OUTPUT_DIRECTORY_RELWITHDEBINFO "${CMAKE_BINARY_DIR}/bin"
 )
+
+# copy plugins
+# Ensure the directory exists before copying the file
+add_custom_command(
+    OUTPUT ${CMAKE_BINARY_DIR}/bin/assets/plugins/TTSPlugin.dll
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/bin/assets/plugins
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_SOURCE_DIR}/../TTSPlugin/build/bin/TTSPlugin.dll ${CMAKE_BINARY_DIR}/bin/assets/plugins/TTSPlugin.dll
+    DEPENDS ${CMAKE_SOURCE_DIR}/../TTSPlugin/build/bin/TTSPlugin.dll
+    COMMENT "Copying TTSPlugin.dll to bin/assets/plugins directory..."
+)
+
+# Create a custom target that depends on the output of the custom command
+add_custom_target(copy_files ALL
+    DEPENDS ${CMAKE_BINARY_DIR}/bin/assets/plugins/TTSPlugin.dll
+)
+
+# Ensure your main target depends on the custom target
+add_dependencies(Jarvis copy_files)

@@ -9,10 +9,12 @@ int main()
 }
 
 Plugin plugin;
+Plugin ttsPlugin;
 
 OnStart(1)
 {
 	plugin = Plugins.Load(stack_string("Plugin.dll"));
+	ttsPlugin = Plugins.Load(stack_string("TTSPlugin.dll"));
 }
 
 int i = 0;
@@ -31,4 +33,5 @@ AfterUpdate(1)
 OnClose(1)
 {
 	Plugins.Dispose(plugin);
+	Plugins.Dispose(ttsPlugin);
 }
